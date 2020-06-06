@@ -138,6 +138,16 @@ install vscode extension mocha sidebar, and create/modify `.vscode/settings.json
 }
 ```
 
+mocha sidebar will create a `coverage` folder for every folder open by VS Code. we have to disable it.
+
+<kbd>Ctrl + Shift + P</kbd>, input "`open user setting`" and click, input "`mocha.coverage`" to search, then click "`Edit in settings.json`". refer to [doc](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar)
+
+```json
+    "mocha.coverage": {
+        "enable": false
+    },
+```
+
 open `Activity Bar > Test > MOCHA`
 
 - click the umbrella icon to run test coverage check. and check result in folder `coverage/index.html`
