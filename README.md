@@ -1,3 +1,5 @@
-# My memo
+# I see
 
-- Setup VS Code for TypeScript and Vue [Setup VS Code for TypeScript and Vue](vscode-ts-vue)
+[Index](https://beingj.github.io/memo/)
+
+- [Setup VS Code for TypeScript and Vue](vscode-ts-vue)
