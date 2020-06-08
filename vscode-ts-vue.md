@@ -233,13 +233,13 @@ modify `.vscode/settings.json` to hide some folders
 
 ## vue
 
-install vue
+install vue and types
 
 ```bash
-npm install --save-dev vue
+npm install --save-dev vue @types/vue
 ```
 
-copy node_modules/vue/types to node_modules/@types/ and change name
+but there is no types definition files in node_modules/@types/vue. we have to copy them from node_modules/vue/types.
 
 ```bash
 cp node_modules/vue/types node_modules/@types/vue -a
