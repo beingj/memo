@@ -143,9 +143,21 @@ mocha sidebar will create a `coverage` folder for every folder open by VS Code. 
 <kbd>Ctrl + Shift + P</kbd>, input "`open user setting`" and click, input "`mocha.coverage`" to search, then click "`Edit in settings.json`". refer to [doc](https://marketplace.visualstudio.com/items?itemName=maty.vscode-mocha-sidebar)
 
 ```json
+{
     "mocha.coverage": {
         "enable": false
     },
+}
+```
+
+and then enable it in workspace settings in `.vscode/settings.json`:
+
+```json
+{
+    "mocha.coverage": {
+        "enable": true
+    },
+}
 ```
 
 open `Activity Bar > Test > MOCHA`
@@ -167,6 +179,14 @@ create/modify `.vscode/launch.json`
 {
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "Launch Edge",
+            "request": "launch",
+            "type": "pwa-msedge",
+            "runtimeExecutable": "dev", // comment out this line if your msedge is stable version
+            "url": "file:///${workspaceFolder}/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
         {
             "type": "node",
             "request": "launch",
@@ -239,10 +259,10 @@ install vue and types
 npm install --save-dev vue @types/vue
 ```
 
-but there is no types definition files in node_modules/@types/vue. we have to copy them from node_modules/vue/types.
+but there is no types definition files in `node_modules/@types/vue`. we have to copy them from `node_modules/vue/types`.
 
 ```bash
-cp node_modules/vue/types node_modules/@types/vue -a
+cp node_modules/vue/types/* node_modules/@types/vue
 ```
 
 download `vue.js` and `require.js` and put them to `js` folder
