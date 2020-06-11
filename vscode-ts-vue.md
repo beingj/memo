@@ -26,8 +26,10 @@ modify `tsconfig.json`
     "compilerOptions": {
         "target": "ES2017",
         "module": "umd",
+        "moduleResolution": "node", // so tsc can find *.d.ts files in `node_modules/vue/types`
         "strict": true,
         "esModuleInterop": true,
+        "sourceMap": true, // for debug in browser
         "outDir": "js"
     },
     "include": [
@@ -253,16 +255,20 @@ modify `.vscode/settings.json` to hide some folders
 
 ## vue
 
-install vue and types
+install vue
 
 ```bash
-npm install --save-dev vue @types/vue
+npm install --save-dev vue
 ```
 
-but there is no types definition files in `node_modules/@types/vue`. we have to copy them from `node_modules/vue/types`.
+vue type files are in `node_modules/vue/types`. we have to set `moduleResolution` to `node` in `tsconfig.json`, or tsc will not find them.
 
-```bash
-cp node_modules/vue/types/* node_modules/@types/vue
+```json
+{
+  "compilerOptions": {
+        "moduleResolution": "node",
+  }
+}
 ```
 
 download `vue.js` and `require.js` and put them to `js` folder
