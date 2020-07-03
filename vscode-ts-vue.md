@@ -33,7 +33,7 @@ modify `tsconfig.json`
         "outDir": "js"
     },
     "include": [
-        "src/*"
+        "src"
     ],
     "exclude": [
         "test"
@@ -66,15 +66,18 @@ npm install --save-dev ts-node typescript
 npm install --save-dev @types/chai @types/mocha
 ```
 
-add test script to `package.json`
+add test scripts to `package.json`
 
 ```json
 {
   "scripts": {
-     "test": "mocha --require ts-node/register test/**/*.ts"
+     "test": "mocha --require ts-node/register test/**/*.ts",
+     "nyc": "nyc --all --reporter=html --reporter=text --reporter=lcov node_modules/mocha/bin/_mocha --require ts-node/register test/**/*.ts --exit"
   },
 }
 ```
+
+launch these scripts in vscode: <kbd>Ctrl+k Ctrl+j</kbd>, then select `npm`.
 
 create a module: `src/a.ts`
 
@@ -127,6 +130,9 @@ create `.nycrc.json`, add content as below to only check ts files in `src` folde
     ]
 }
 ```
+
+> **Note**
+> mocha sidebar will slow down vscode when modify test cases. disable it then.
 
 install vscode extension mocha sidebar, and create/modify `.vscode/settings.json`
 
@@ -300,7 +306,7 @@ create `index.html`
         <div v-if='loading' class="loading">loading...</div>
         <template>
             <p>
-                {{ msg }}
+                &lcub;&lcub; msg &rcub;&rcub;
             </p>
         </template>
     </div>
